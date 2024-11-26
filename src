@@ -1,0 +1,49 @@
+DROP DATABASE IF EXISTS Academia;
+
+CREATE DATABASE Academia;
+
+USE Academia;
+
+CREATE TABLE Alunos ( 
+id_aluno INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100) NOT NULL,
+data_nascimento DATETIME,
+genero VARCHAR(50),
+telefone VARCHAR(15),
+email VARCHAR(255),
+data_cadastro DATETIME);
+
+CREATE TABLE Professores (
+id_professores INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+especialidade VARCHAR(50),
+telefone VARCHAR(15),
+email VARCHAR(255));
+
+CREATE TABLE Planos (
+id_plano INT AUTO_INCREMENT PRIMARY KEY,
+tipo_plano VARCHAR(50),
+descricao TEXT,
+duracao_meses DATE);
+
+CREATE TABLE Treino (
+id_treino INT AUTO_INCREMENT PRIMARY KEY,
+id_aluno INT NOT NULL,
+descricao TEXT,
+data_inicio DATETIME,
+data_fim DATETIME);
+
+CREATE TABLE Aulas (
+id_aula INT AUTO_INCREMENT PRIMARY KEY,
+tipo_aula VARCHAR(40),
+id_professor INT NOT NULL,
+horario TIME,
+capacidade INT(30));
+
+CREATE TABLE Pagamentos (
+id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+id_aluno INT NOT NULL,
+id_plano INT NOT NULL,
+data_pagamento DATE,
+valor_pago DECIMAL(10, 2),
+forma_pagamento ENUM ('Pix','Cartão','Dinheiro'));
